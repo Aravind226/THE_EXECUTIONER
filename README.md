@@ -9,16 +9,13 @@
 
 **THE_EXECUTIONER** is a distributed system that allows users to run untrusted Python code securely. It solves the "blocking" problem of web servers by offloading execution to background workers and solves the "security" problem by isolating every script in a disposable Docker container.
 
-<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/51e1a875-f587-4f49-8945-f31ae3ee049c" />
-
+<img width="1920" height="1080" alt="System Interface" src="https://github.com/user-attachments/assets/51e1a875-f587-4f49-8945-f31ae3ee049c" />
 
 ---
 
 ## ⚙️ System Architecture
 
 The system uses an **Asynchronous Producer-Consumer** architecture to handle load without freezing the main API.
-
-
 
 1.  **The Interface (React):** Submits code and polls for life-or-death status updates.
 2.  **The Gatekeeper (Django):** Validates the payload and issues a "Death Warrant" (Task ID) into the Queue.
@@ -44,18 +41,6 @@ The system uses an **Asynchronous Producer-Consumer** architecture to handle loa
 
 ---
 
-## 🚀 Deployment Protocol
-
-### Prerequisites
--   **Docker Desktop** (Must be running).
--   **Python 3.10+**
--   **Node.js**
--   **Redis** (Run via Docker: `docker run -d -p 6379:6379 redis`)
-
-### 1. Clone the Repo
-```bash
-git clone [https://github.com/YOUR_USERNAME/the-executioner.git](https://github.com/YOUR_USERNAME/the-executioner.git)
-cd the-executioner
 ## ⚡ Installation Manual
 
 Follow these steps to deploy the system locally.
@@ -65,7 +50,6 @@ Before running the code, ensure your machine has the following "Heavy Machinery"
 * **Docker Desktop:** The engine needs this to spin up isolated containers.
     * *Linux Users:* Ensure your user has permission to use Docker (`sudo usermod -aG docker $USER`).
 * **Redis:** This acts as the message broker.
-    * *Quick Start:* Run `docker run -d -p 6379:6379 redis`
 * **Python 3.10+**
 * **Node.js 16+**
 
@@ -73,43 +57,3 @@ Before running the code, ensure your machine has the following "Heavy Machinery"
 ```bash
 git clone [https://github.com/YOUR_USERNAME/the-executioner.git](https://github.com/YOUR_USERNAME/the-executioner.git)
 cd the-executioner
-# 1. Start Redis (if not already running)
-docker run -d -p 6379:6379 redis
-
-# 2. Download the Sandbox Image (Alpine Linux + Python)
-docker pull python:3.10-alpine
-# Navigate to root
-cd the-executioner
-
-# Create Virtual Environment
-python -m venv venv
-
-# Activate Environment
-# Windows:
-venv\Scripts\activate
-# Mac/Linux:
-source venv/bin/activate
-
-# Install Dependencies
-pip install -r requirements.txt
-
-# Create Database Tables
-python manage.py migrate
-
-# Start the API Gateway
-python manage.py runserver
-# Activate the same virtual environment
-source venv/bin/activate  # (Or venv\Scripts\activate on Windows)
-
-# Start the Celery Worker
-# Windows:
-celery -A core worker --pool=solo --loglevel=info
-# Mac/Linux:
-celery -A core worker --loglevel=info
-cd frontend
-
-# Install Node Modules
-npm install
-
-# Start the Dev Server
-npm run dev
