@@ -1,0 +1,30 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Global Dark Theme */
+body {
+  @apply bg-slate-950 text-slate-200 antialiased;
+}
+
+/* Custom "Hacker" Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  @apply bg-slate-950;
+}
+::-webkit-scrollbar-thumb {
+  @apply bg-slate-700 rounded;
+}
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-slate-600;
+}
+
+/* Syntax Highlighting Tweaks */
+pre {
+  margin: 0 !important;
+  background: transparent !important;
+  text-shadow: none !important;
+}

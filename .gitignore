@@ -1,0 +1,55 @@
+# ===========================
+# PYTHON / DJANGO
+# ===========================
+# Virtual Environment (Crucial to ignore)
+venv/
+env/
+.venv/
+
+# Python Bytecode (Junk files)
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Local Database (Don't share your test data)
+db.sqlite3
+db.sqlite3-journal
+
+# Environment Variables (Secrets!)
+.env
+.env.local
+
+# Django Static/Media (Generated at runtime)
+staticfiles/
+media/
+
+# ===========================
+# FRONTEND (REACT/VITE)
+# ===========================
+# Dependencies (Massive folder)
+node_modules/
+frontend/node_modules/
+
+# Build Output
+dist/
+frontend/dist/
+build/
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# ===========================
+# CELERY / WORKERS
+# ===========================
+# Scheduler files (if you use celery beat later)
+celerybeat-schedule
+celerybeat.pid
+
+# ===========================
+# SYSTEM / IDE
+# ===========================
+.DS_Store
+.vscode/
+.idea/

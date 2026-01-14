@@ -1,0 +1,2 @@
+npm install -D tailwindcss@3.4.17 postcss autoprefixer
+node node_modules/tailwindcss/lib/cli.js init -p
